@@ -8,7 +8,7 @@ class BowlingScore:
 
     @staticmethod
     def _is_spare(frame_scores):
-        return True
+        return sum(frame_scores[0:2]) == 10
 
     @staticmethod
     def _is_open(frame_scores):
@@ -32,6 +32,10 @@ class BowlingScore:
                 total += self.frames[round_index+1][0] + self.frames[round_index+1][1]
             elif self._is_strike(frame_scores) and round_index == 9:
                 total += sum(frame_scores)
+
+            elif self._is_spare(frame_scores) and round_index <= 8:
+                total += sum(frame_scores)
+                total += self.frames[round_index+1][0]
 
             else:
                 total += sum(frame_scores)

@@ -14,6 +14,16 @@ class ScoreTests(unittest.TestCase):
         bowling_score = BowlingScore(frames)
         self.assertEqual(bowling_score.total_score(), 213)
 
+    def test_all_frames_both_spare(self):
+        frames = [[9, 1], [9, 1], [9, 1], [9, 1], [9, 1], [9, 1], [9, 1], [9, 1], [9, 1], [9, 1, 0]]
+        bowling_score = BowlingScore(frames)
+        self.assertEqual(bowling_score.total_score(), 181)
+
+    def test_all_frames_both_spare_except_10th(self):
+        frames = [[9, 1], [9, 1], [9, 1], [9, 1], [9, 1], [9, 1], [9, 1], [9, 1], [9, 1], [8, 1]]
+        bowling_score = BowlingScore(frames)
+        self.assertEqual(bowling_score.total_score(), 179)
+
 
 if __name__ == '__main__':
     unittest.main()
