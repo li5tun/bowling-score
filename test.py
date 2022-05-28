@@ -29,6 +29,11 @@ class ScoreTests(unittest.TestCase):
         bowling_score = BowlingScore(frames)
         self.assertEqual(bowling_score.total_score(), 90)
 
+    def test_mixing_frames(self):
+        frames = [[10], [8, 1], [9, 1], [8, 1], [10], [8, 1], [8, 1], [9, 1], [8, 1], [10, 9, 9]]
+        bowling_score = BowlingScore(frames)
+        self.assertEqual(bowling_score.total_score(), 147)
+
 
 if __name__ == '__main__':
     unittest.main()
