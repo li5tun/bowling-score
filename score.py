@@ -10,10 +10,6 @@ class BowlingScore:
     def _is_spare(frame_scores):
         return sum(frame_scores[0:2]) == 10
 
-    @staticmethod
-    def _is_open(frame_scores):
-        return True
-
     def total_score(self):
         total = 0
         for round_index, frame_scores in enumerate(self.frames):
