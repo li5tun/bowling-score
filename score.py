@@ -20,15 +20,20 @@ class BowlingScore:
             if self._is_strike(frame_scores) and round_index <= 6:
                 total += frame_scores[0]
                 total += sum(self.frames[round_index+1])
-                total += sum(self.frames[round_index+2])
-            if self._is_strike(frame_scores) and round_index == 7:
+                if len(self.frames[round_index+1]) == 1:
+                    total += self.frames[round_index+2][0]
+            elif self._is_strike(frame_scores) and round_index == 7:
                 total += frame_scores[0]
                 total += sum(self.frames[round_index+1])
-                total += self.frames[round_index+1][0]
-            if self._is_strike(frame_scores) and round_index == 8:
+                if len(self.frames[round_index + 1]) == 1:
+                    total += self.frames[round_index+1][0]
+            elif self._is_strike(frame_scores) and round_index == 8:
                 total += frame_scores[0]
                 total += self.frames[round_index+1][0] + self.frames[round_index+1][1]
-            if self._is_strike(frame_scores) and round_index == 9:
+            elif self._is_strike(frame_scores) and round_index == 9:
+                total += sum(frame_scores)
+
+            else:
                 total += sum(frame_scores)
 
         return total
